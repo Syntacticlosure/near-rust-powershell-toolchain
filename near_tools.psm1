@@ -45,8 +45,8 @@ $rawProjectName = $projectName.replace("-","_")
 $nearconfig = @{"accountId"=$accountId;"masterAccount"=$masterAccount;"projectName"=$rawProjectName}
 cargo new $projectName --lib
 cd $projectName
-invoke-webrequest $cargo_template|select-object -property content|out-file cargo.toml -append -encoding utf8
-invoke-webrequest $lib_template|select-object -property content|out-file src/lib.rs -encoding utf8
+invoke-webrequest $cargo_template|select-object -expandproperty content|out-file cargo.toml -append -encoding utf8
+invoke-webrequest $lib_template|select-object -expandproperty content|out-file src/lib.rs -encoding utf8
 convertto-json $nearconfig|out-file nearconfig.json
 near login
 }
