@@ -4,7 +4,6 @@ $obj = cat ./nearconfig.json|convertfrom-json
 $script:masterAccount = $obj.masterAccount
 $script:accountId = $obj.accountId
 $script:projectName = $obj.projectName
-write-host $obj.projectName
 $script:file = "target/wasm32-unknown-unknown/release/$projectName.wasm"
 }
 
